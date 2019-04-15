@@ -2,84 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
 
 class CustomerCtrl extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        return view('customer.index');
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $results = Customer::all();
+        return view('customer.index')->with('results', $results);
+    }
+
+
     public function create()
     {
         return view('customer.create');
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:customers|max:50',
+            'mobile' => 'required',
+            'status' => 'required',
+            'address' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $customer = new Customer();
+        $customer->name =  $request->name;
+        $customer->mobile =  $request->mobile;
+        $customer->email =  $request->email;
+        $customer->status =  $request->status;
+        $customer->address =  $request->address;
+        $customer->amount =  $request->amount;
+        $customer->user_id =  1;
+        $customer->save();
+
+        return redirect('/customer');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         return view('customer.details');
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         return view('customer.edit');
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

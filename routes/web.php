@@ -11,7 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//Route::resource('/welcome','HomeCtrl');
+Route::get('/','HomeCtrl@index');
+Route::resource('/category','CategoryController');
+Route::get('delete/{id}','CategoryController@destroy');
+
 Route::resource('/customer','CustomerCtrl');
+Route::resource('/product','ProductController');
+Route::get('delete/{id}','ProductController@destroy');
+
+
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

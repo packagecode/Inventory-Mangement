@@ -7,79 +7,114 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $results = Product::all();
+        return view('product.index')->with('results', $results);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_name' => 'required|unique:products|max:35',
+            'alart_qty' => 'required',
+            'sell_price' => 'required',
+            'parcelse_price' => 'required',
+            'status' => 'required',
+
+        ]);
+        if($request->hasFile('picture')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('picture')->storeAs('public/picture', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        $product = new product();
+        $product->product_name =  $request->product_name;
+        $product->alart_qty =  $request->alart_qty;
+        $product->sell_price =  $request->sell_price;
+        $product->parcelse_price =  $request->parcelse_price;
+        $product->status =  $request->status;
+        $product->profit =  $request->profit;
+        $product->picture = $fileNameToStore;
+
+        $product->user_id =  1;
+        $product->cat_id =  1;
+        $product->supplier_id =  1;
+        $product->save();
+
+        return redirect('/product');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(product $product)
+
+    public function show($id)
     {
-        //
+        $result = product::find($id);
+        return view('product.details')->with('result', $result);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(product $product)
+
+    public function edit($id)
     {
-        //
+        $result = product::find($id);
+        return view('product.edit')->with('result', $result);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, product $product)
+
+    public function update(Request $request, $id)
     {
-        //
+        if($request->hasFile('picture')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('picture')->storeAs('public/picture', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        $product = product::find($id);
+        $product->product_name =  $request->product_name;
+        $product->alart_qty =  $request->alart_qty;
+        $product->sell_price =  $request->sell_price;
+        $product->parcelse_price =  $request->parcelse_price;
+        $product->status =  $request->status;
+        $product->profit =  $request->profit;
+        $product->picture = $fileNameToStore;
+
+        $product->user_id =  1;
+        $product->cat_id =  1;
+        $product->supplier_id =  1;
+        $product->save();
+
+        return redirect('/product')->with('Success','Product Update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        $result = product::find($id);
+        $result->delete();
+        return redirect('/product')->with('Success', 'Product Remove');
     }
 }

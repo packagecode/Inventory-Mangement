@@ -44,7 +44,7 @@ class SalesInvoiceController extends Controller
      * @param  \App\SalesInvoice  $salesInvoice
      * @return \Illuminate\Http\Response
      */
-    public function show(SalesInvoice $salesInvoice)
+    public function show($id)
     {
         //
     }
