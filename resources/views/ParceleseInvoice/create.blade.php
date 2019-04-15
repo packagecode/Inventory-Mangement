@@ -34,7 +34,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Edit Customer</h3>
+                        <h3 class="box-title">Add Invoice</h3>
                     </div>
 
                     @if ($errors->any())
@@ -49,54 +49,33 @@
                     @endif
                 <!-- /.box-header -->
                     <!-- form start -->
-                    {!! Form::open(['action' => ['CustomerCtrl@update', $result->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['action' => 'ProductController@store', 'files'=>true, 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                     <div class="box-body">
                         <div class="form-group col-md-6">
-                            {{Form::label('name', 'Customer Name')}}
-                            {{Form::text('name', $result->name, ['class' => 'form-control', 'placeholder' => 'Category name'])}}
+                            {{Form::label('invoice_no', 'Parcelese Invoice')}}
+                            {{Form::text('invoice_no', '', ['class' => 'form-control', 'placeholder' => 'Example: G67GY89'])}}
                         </div>
 
                         <div class="form-group col-md-6">
-                            {{Form::label('mobile', 'Customer Mobile')}}
-                            {{Form::tel('mobile', $result->mobile, ['class' => 'form-control', 'placeholder' => 'Category Mobile'])}}
+                            {{Form::label('do_no', 'DO no')}}
+                            {{Form::text('do_no', '', ['class' => 'form-control', 'placeholder' => 'DO No'])}}
                         </div>
                         <div class="form-group col-md-6">
-                        {{Form::label('email', 'Customer Email')}}
-                        {{Form::email('email', $result->email, ['class' => 'form-control', 'placeholder' => 'Category Email'])}}
+                            {{Form::label('date', 'Date')}}
+                            {{Form::date('date', '', ['class' => 'form-control', 'placeholder' => '12-12-2018'])}}
+                        </div>
                     </div>
-                    <div class="form-group col-md-6" >
-                        {{Form::label('address', 'Customer Address')}}
-                        {{Form::text('address', $result->address, ['class' => 'form-control', 'placeholder' => 'Category Address'])}}
-                    </div>
-                    <div class="form-group col-md-6">
-                        {{Form::label('amount', 'Amount')}}
-                        {{Form::number('amount', $result->amount, ['class' => 'form-control', 'placeholder' => 'Amount'])}}
-                    </div>
+                    <!-- /.box-body -->
 
-
-                    <div class="form-group col-md-6">
-                        {{Form::label('status', 'Status')}}
-                        {{Form::select('status',
-                        [
-                        'active'=>'Active',
-                        'deactive'=>'De-Active',
-                       ],
-                         $result->status,
-                         ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
+                    <div class="box-footer">
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
                     </div>
+                    {!! Form::close() !!}
                 </div>
-                <!-- /.box-body -->
-
-                <div class="box-footer">
-                    {{Form::hidden('_method','PUT')}}
-                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                </div>
-                {!! Form::close() !!}
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
+            <!-- /.col -->
         </div>
         <!-- /.row -->
     </section>
@@ -118,3 +97,10 @@
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
 @endsection
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>

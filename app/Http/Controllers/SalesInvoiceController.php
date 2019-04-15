@@ -55,7 +55,7 @@ class SalesInvoiceController extends Controller
      * @param  \App\SalesInvoice  $salesInvoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(SalesInvoice $salesInvoice)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +67,7 @@ class SalesInvoiceController extends Controller
      * @param  \App\SalesInvoice  $salesInvoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SalesInvoice $salesInvoice)
+    public function update(Request $request,$id)
     {
         //
     }
@@ -78,7 +78,7 @@ class SalesInvoiceController extends Controller
      * @param  \App\SalesInvoice  $salesInvoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SalesInvoice $salesInvoice)
+    public function destroy($id)
     {
         //
     }

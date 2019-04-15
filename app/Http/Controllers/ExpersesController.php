@@ -30,24 +30,24 @@ class ExpersesController extends Controller
     }
 
 
-    public function show(Experses $experses)
+    public function show($id)
     {
         //
     }
 
 
-    public function edit(Experses $experses)
+    public function edit($id)
     {
         //
     }
 
 
-    public function update(Request $request, Experses $experses)
+    public function update(Request $request,$id)
     {
         //
     }
 
-    public function destroy(Experses $experses)
+    public function destroy($id)
     {
         //
     }

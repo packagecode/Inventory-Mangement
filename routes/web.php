@@ -19,9 +19,11 @@ Route::get('/','HomeCtrl@index');
 Route::resource('/category','CategoryController');
 Route::get('delete/{id}','CategoryController@destroy');
 
+Route::resource('/ParceleseInvoice','ParceleseInvoiceController');
 Route::resource('/customer','CustomerCtrl');
 Route::resource('/product','ProductController');
 Route::get('delete/{id}','ProductController@destroy');
+Route::get('delete/{id}','CustomerCtrl@destroy');
 
 
 

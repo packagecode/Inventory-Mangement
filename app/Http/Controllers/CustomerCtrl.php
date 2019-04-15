@@ -52,25 +52,39 @@ class CustomerCtrl extends Controller
 
     public function show($id)
     {
-        return view('customer.details');
+        $result = Customer::find($id);
+        return view('customer.details')->with('result', $result);
 
     }
 
 
     public function edit($id)
     {
-        return view('customer.edit');
+        $result = Customer::find($id);
+        return view('customer.edit')->with('result', $result);
 
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->name =  $request->name;
+        $customer->mobile =  $request->mobile;
+        $customer->email =  $request->email;
+        $customer->status =  $request->status;
+        $customer->address =  $request->address;
+        $customer->amount =  $request->amount;
+        $customer->user_id =  1;
+        $customer->save();
+
+        return redirect('/customer');
     }
 
     public function destroy($id)
     {
-        //
+        $result = Customer::find($id);
+        $result->delete();
+        return redirect('/customer')->with('Success', 'Customer Remove');
     }
 }

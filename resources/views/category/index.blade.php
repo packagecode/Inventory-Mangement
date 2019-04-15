@@ -63,8 +63,8 @@
                                         <a href="/category/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/category/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
                                         <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
-                                       {{-- <a href="">
-                                            {!!Form::open(['action' => ['CategoryController@destroy', $result->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                        {{--<a href="">
+                                            {!!Form::open(['action' => ['CategoryController@destroy', $result->id], 'method' => 'POST', 'class' => 'pull-left'])!!}
                                             {{Form::hidden('_method', 'DELETE')}}
                                             {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                                             {!!Form::close()!!}

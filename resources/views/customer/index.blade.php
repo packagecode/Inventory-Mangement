@@ -54,10 +54,10 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            <?php $i=1 ?>
                             @foreach($results as $result)
                                 <tr>
-                                    <td>{{$result->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$result->name}}</td>
                                     <td>{{$result->mobile}}</td>
                                     <td>{{$result->email}}</td>
@@ -65,9 +65,9 @@
                                     <td>{{$result->amount}}</td>
                                     <td>{{$result->status}}</td>
                                     <td>
-                                        <a href="#">Details</a>
-                                        <a href="#">Details</a>
-                                        <a href="#">Details</a>
+                                        <a href="/customer/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
+                                        <a href="/customer/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

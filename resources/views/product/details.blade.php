@@ -36,16 +36,18 @@
                     <div class="col-lg-8 col-md-8"><i class="fa fa-users"></i> View Product Details</div>
                     <div class="col-lg-4 col-md-4 text-right">
                         <div class="btn-group text-center">
-                            <a href="/product" class="btn btn-success btn-sm btn-default"><i class="fa fa-eye fa-1x"></i></a>
-                            <a href="/product/{{$result->id}}/edit" class="btn btn-success btn-sm btn-default"><i class="fa fa-edit fa-1x"></i></a>
+                            <a href="/product" class="btn btn-success btn-sm btn-default"><i
+                                    class="fa fa-eye fa-1x"></i></a>
+                            <a href="/product/{{$result->id}}/edit" class="btn btn-success btn-sm btn-default"><i
+                                    class="fa fa-edit fa-1x"></i></a>
                             <a href="#" class="btn btn-success btn-sm btn-default"><i class="fa fa-print fa-1x"></i></a>
-                            <a href="delete/{{$result->id}}" class="btn btn-success btn-sm btn-default"><i class="fa fa-trash-o fa-1x"></i></a>
+                            <a href="delete/{{$result->id}}" class="btn btn-success btn-sm btn-default"><i
+                                    class="fa fa-trash-o fa-1x"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
-
 
 
                 <div class="row">
@@ -54,12 +56,15 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
                                         <span class="text-left">
-                                        <img src="{{$result->picture}}" alt="no image" class="img-responsive img-thumbnail">
+                                <img src="{{ asset('storage/picture/'.$result->picture) }}" alt="no image"
+                                     title="" class="img-responsive img-thumbnail">
                                         </span>
+
                             </div>
                             <div class="col-lg-9 col-md-9">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i class="fa fa-indent"></i> Summery</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i
+                                                class="fa fa-indent"></i> Summery</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -70,7 +75,8 @@
                                                 <tbody>
 
                                                 <tr>
-                                                    <td class="text-success"><i class="fa fa-user"></i> Product Name</td>
+                                                    <td class="text-success"><i class="fa fa-user"></i> Product Name
+                                                    </td>
                                                     <td>{{ $result->product_name }}</td>
                                                 </tr>
                                                 <tr>
@@ -86,7 +92,8 @@
                                                     <td>{{ $result->sell_price }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-success"><i class="fa fa-group"></i> Parcelse price</td>
+                                                    <td class="text-success"><i class="fa fa-group"></i> Parcelse price
+                                                    </td>
                                                     <td>{{ $result->parcelse_price }}</td>
                                                 </tr>
                                                 <tr>
@@ -98,12 +105,15 @@
                                                     <td>{{ $result->profit}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-success"><i class="fa fa-calendar"></i> Create Date</td>
+                                                    <td class="text-success"><i class="fa fa-calendar"></i> Create Date
+                                                    </td>
                                                     <td>{{ $result->created_at }}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td class="text-success"><i class="fa fa-university"></i> Update Date</td>
+                                                    <td class="text-success"><i class="fa fa-university"></i> Update
+                                                        Date
+                                                    </td>
                                                     <td>{{ $result->updated_at }}  </td>
                                                 </tr>
                                                 </tbody>

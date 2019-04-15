@@ -44,7 +44,7 @@ class ParcelseController extends Controller
      * @param  \App\Parcelse  $parcelse
      * @return \Illuminate\Http\Response
      */
-    public function show(Parcelse $parcelse)
+    public function show($id)
     {
         //
     }
@@ -55,7 +55,7 @@ class ParcelseController extends Controller
      * @param  \App\Parcelse  $parcelse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Parcelse $parcelse)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +67,7 @@ class ParcelseController extends Controller
      * @param  \App\Parcelse  $parcelse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parcelse $parcelse)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +78,7 @@ class ParcelseController extends Controller
      * @param  \App\Parcelse  $parcelse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parcelse $parcelse)
+    public function destroy($id)
     {
         //
     }

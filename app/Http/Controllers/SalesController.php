@@ -44,7 +44,7 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function show(Sales $sales)
+    public function show($id)
     {
         //
     }
@@ -55,7 +55,7 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales $sales)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +67,7 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales $sales)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +78,7 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales $sales)
+    public function destroy($id)
     {
         //
     }

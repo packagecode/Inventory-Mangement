@@ -18,6 +18,7 @@ class CreateParceleseInvoicesTable extends Migration
             $table->bigInteger('supplier_id')->index();
             $table->bigInteger('invoice_no');
             $table->bigInteger('customer_id')->index();
+            $table->bigInteger('do_no');
             $table->timestamp('date');
             $table->double('discount','8','2');
             $table->double('discount_value','8','2');
